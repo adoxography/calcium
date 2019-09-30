@@ -1,0 +1,24 @@
+name: calcium
+version: 0.1.0
+
+authors:
+  - adoxography <nevermore667@gmail.com>
+
+targets:
+  calcium:
+    main: src/cli.cr
+
+scripts:
+  postinstall: make bin
+
+executables:
+  - calcium
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 0.10.1
+
+crystal: 0.30.1
+
+license: MIT
