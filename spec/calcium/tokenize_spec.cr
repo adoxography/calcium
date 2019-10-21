@@ -6,15 +6,9 @@ module Calcium
       tokenize("5").should eq([ NumberToken.new("5") ])
     end
 
-    it "doesn't parse letters" do
-      expect_raises(TokenizeException) do
-        tokenize("a")
-      end
-    end
-
     it "doesn't parse invalid expressions" do
       expect_raises(TokenizeException) do
-        tokenize("a+5")
+        tokenize("$+5")
       end
     end
 
@@ -54,6 +48,14 @@ module Calcium
       ])
     end
 
+    it "parses negatives with functions correctly" do
+      tokenize("abs -1").should eq([
+        OperatorToken.new("abs"),
+        OperatorToken.new("u-"),
+        NumberToken.new("1")
+      ])
+    end
+
     it "parses subtraction correctly" do
       tokenize("5-5").should eq([
         NumberToken.new("5"),
@@ -67,6 +69,20 @@ module Calcium
         ParenToken.new("("),
         ParenToken.new(")")
       ])
+    end
+
+    it "parses functions" do
+      tokenize("sin").should eq([ OperatorToken.new("sin") ])
+    end
+
+    it "doesn't parse unknown functions" do
+      expect_raises(TokenizeException) do
+        tokenize("foo")
+      end
+    end
+
+    it "parses commas" do
+      tokenize(",").should eq([ CommaToken.new(",") ])
     end
 
     it "parses negation of complex expressions" do

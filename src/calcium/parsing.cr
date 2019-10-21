@@ -48,14 +48,14 @@ module Calcium
       @output.push token if token.is_a? NumberToken
 
       if token.is_a? OperatorToken
-        if token.unary?
+        if token.function?
+          @ops.push token
+        elsif token.unary?
           token.prefix? ? @ops.push(token.as(OperatorToken)) : @output.push(token)
         else
           handle_binary_operator(token)
         end
-      end
-
-      if token.is_a? ParenToken
+      elsif token.is_a? ParenToken
         @ops.push token.as(ParenToken) if token.left?
         handle_right_paren if token.right?
       end

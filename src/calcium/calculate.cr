@@ -10,7 +10,7 @@ module Calcium
 
     tokens.each do |token|
       if token.is_a? OperatorToken
-        num_args = token.unary? ? 1 : 2
+        num_args = token.num_args
         if stack.size < num_args
           raise CalculateException.new("Unexpected operator #{token}")
         end

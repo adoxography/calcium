@@ -26,6 +26,38 @@ module Calcium
       calculate("5!").should eq(120)
     end
 
+    it "calculates sine" do
+      calculate("sin 1").should eq(0.8414709848078965)
+    end
+
+    it "calculates cosine" do
+      calculate("cos 1").should eq(0.5403023058681398)
+    end
+
+    it "calculates tangent" do
+      calculate("tan 1").should eq(1.557407724654902)
+    end
+
+    it "calculates absolute value" do
+      calculate("abs -1").should eq(1)
+    end
+
+    it "calculates max" do
+      calculate("max 2, 1").should eq(2)
+    end
+
+    it "calculates min" do
+      calculate("min 2, 1").should eq(1)
+    end
+
+    it "handles functions with parentheses" do
+      calculate("sin(2+2)").should eq(-0.7568024953079282)
+    end
+
+    it "handles functions next to operators" do
+      calculate("sin 1 + 1").should eq(1.8414709848078965)
+    end
+
     it "negates numbers" do
       calculate("-5").should eq(-5)
     end
@@ -36,6 +68,10 @@ module Calcium
 
     it "handles complex expressions" do
       calculate("9 ^ 0 + 2! * 3 / (5 - 3)").should eq(4)
+    end
+
+    it "handles complex function expressions" do
+      calculate("sin(max(2, 3)/3*4)").should eq(-0.7568024953079282)
     end
 
     it "raises an exception when dividing by 0" do

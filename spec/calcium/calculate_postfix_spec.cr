@@ -92,6 +92,62 @@ module Calcium
       calculate_postfix(input).should eq(24)
     end
 
+    it "finds the sine of a number" do
+      input = [
+        NumberToken.new("1"),
+        OperatorToken.new("sin")
+      ]
+
+      calculate_postfix(input).should eq(0.8414709848078965)
+    end
+
+    it "finds the cosine of a number" do
+      input = [
+        NumberToken.new("1"),
+        OperatorToken.new("cos")
+      ]
+
+      calculate_postfix(input).should eq(0.5403023058681398)
+    end
+
+    it "finds the tangent of a number" do
+      input = [
+        NumberToken.new("1"),
+        OperatorToken.new("tan")
+      ]
+
+      calculate_postfix(input).should eq(1.557407724654902)
+    end
+
+    it "finds the absolute value of a number" do
+      input = [
+        NumberToken.new("-1"),
+        OperatorToken.new("abs")
+      ]
+
+      calculate_postfix(input).should eq(1)
+    end
+
+    it "finds the max of two numbers" do
+      input = [
+        NumberToken.new("2"),
+        NumberToken.new("1"),
+        OperatorToken.new("max")
+      ]
+
+      calculate_postfix(input).should eq(2)
+    end
+
+    it "finds the min of two numbers" do
+      input = [
+        NumberToken.new("2"),
+        NumberToken.new("1"),
+        OperatorToken.new("min")
+      ]
+
+      calculate_postfix(input).should eq(1)
+    end
+
     it "raises an error when taking the factorial of a negative" do
       input = [
         NumberToken.new("-3"),

@@ -262,6 +262,51 @@ module Calcium
       ])
     end
 
+    it "parses functions" do
+      input = [
+        OperatorToken.new("sin"),
+        NumberToken.new("1")
+      ]
+
+      parse_infix(input).should eq([
+        NumberToken.new("1"),
+        OperatorToken.new("sin")
+      ])
+    end
+
+    it "gives functions greater precedence than operators" do
+      input = [
+        ParenToken.new("("),
+        OperatorToken.new("sin"),
+        NumberToken.new("1"),
+        ParenToken.new(")"),
+        OperatorToken.new("+"),
+        NumberToken.new("3")
+      ]
+
+      parse_infix(input).should eq([
+        NumberToken.new("1"),
+        OperatorToken.new("sin"),
+        NumberToken.new("3"),
+        OperatorToken.new("+")
+      ])
+    end
+
+    it "ignores commas" do
+      input = [
+        OperatorToken.new("max"),
+        NumberToken.new("1"),
+        CommaToken.new(","),
+        NumberToken.new("3")
+      ]
+
+      parse_infix(input).should eq([
+        NumberToken.new("1"),
+        NumberToken.new("3"),
+        OperatorToken.new("max")
+      ])
+    end
+
     it "raises an error when there is no closing parenthesis" do
       input = [ ParenToken.new("(") ] of Token
 
