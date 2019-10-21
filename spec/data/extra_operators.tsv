@@ -1,0 +1,10 @@
+Input	Output	Issue
+-5	-5	Unary negation
+2^3	8	Exponentiation
+2^0	1	Power of 0
+2^2^3	256	Associativity of exponentiation
+4!	24	Factorial
+0!	1	0 Factorial
+-4!	-24	Associativity of factorial
+(-4)!	undefined	Factorial of a negative
+4.5!	undefined	Factorial of a non-integer

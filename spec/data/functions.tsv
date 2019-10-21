@@ -1,0 +1,7 @@
+Input	Output	Issue
+sin(1)	0.8415	Function with one argument
+cos(1)	0.5403	Function with one argument
+tan(1)	1.5574	Function with one argument
+abs(-1)	1	Function with one argument
+max(2, 3)	3	Functions with two arguments
+min(2, 3)	2	Functions with two arguments
