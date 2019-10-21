@@ -116,7 +116,7 @@ module Calcium
         OperatorToken.new("tan")
       ]
 
-      calculate_postfix(input).should eq(1.557407724654902)
+      calculate_postfix(input).round(15).should eq(1.557407724654902)
     end
 
     it "finds the absolute value of a number" do

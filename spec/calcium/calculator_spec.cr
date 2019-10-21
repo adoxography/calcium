@@ -35,7 +35,7 @@ module Calcium
     end
 
     it "calculates tangent" do
-      calculate("tan 1").should eq(1.557407724654902)
+      calculate("tan 1").round(15).should eq(1.557407724654902)
     end
 
     it "calculates absolute value" do
