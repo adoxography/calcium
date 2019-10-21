@@ -1,4 +1,5 @@
 # calcium
+[![Build Status](https://travis-ci.org/adoxography/calcium.svg?branch=master)](https://travis-ci.org/adoxography/calcium)
 
 `calcium` implements a basic command line calculator.
 
