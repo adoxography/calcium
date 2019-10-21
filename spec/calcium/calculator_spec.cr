@@ -37,5 +37,23 @@ module Calcium
     it "handles complex expressions" do
       calculate("9 ^ 0 + 2! * 3 / (5 - 3)").should eq(4)
     end
+
+    it "raises an exception when dividing by 0" do
+      expect_raises(DivisionByZeroError) do
+        calculate("2/0")
+      end
+    end
+
+    it "raises an exception when taking the factorial of a negative number" do
+      expect_raises(NegativeFactorialError) do
+        calculate("(-1)!")
+      end
+    end
+
+    it "rasises an exception when taking the factorial of a fractional number" do
+      expect_raises(NonIntegerFactorialError) do
+        calculate("0.5!")
+      end
+    end
   end
 end

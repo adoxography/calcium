@@ -103,6 +103,17 @@ module Calcium
       end
     end
 
+    it "raises an error when taking the factorial of a non-integer" do
+      input = [
+        NumberToken.new("3.5"),
+        OperatorToken.new("!")
+      ]
+
+      expect_raises(NonIntegerFactorialError) do
+        calculate_postfix(input)
+      end
+    end
+
     it "handles complex expressions" do
       input = [
         NumberToken.new("2"),

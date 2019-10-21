@@ -6,7 +6,7 @@ module Calcium::Cli
   def run(args = ARGV)
     result = Calcium.calculate args.shift
     puts Calcium.format(result)
-  rescue e : DivisionByZeroError | NegativeFactorialError
+  rescue e : DivisionByZeroError | NegativeFactorialError | NonIntegerFactorialError
     puts "undefined"
   rescue e : Calcium::CalciumException
     puts e.message
