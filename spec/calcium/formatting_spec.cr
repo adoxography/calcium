@@ -19,7 +19,11 @@ module Calcium
     end
 
     it "truncates to 4 decimal places" do
-      format(5.55555).should eq("5.5555")
+      format(3.33333).should eq("3.3333")
+    end
+
+    it "rounds numbers" do
+      format(6.66666).should eq("6.6667")
     end
   end
 end
